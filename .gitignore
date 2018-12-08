@@ -1,0 +1,5 @@
+Makefile*
+debug/
+release/
+qhttp.pro.user
+ui_widget.h
