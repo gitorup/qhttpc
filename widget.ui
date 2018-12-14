@@ -20,7 +20,7 @@
    <string notr="true">QPushButton {background-color: rgb(0, 150, 250);border:none;color: white}
 QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: white}</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -29,11 +29,11 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
      <height>446</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="topLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="optionLayout">
       <item>
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="methodComboBox">
         <property name="minimumSize">
          <size>
           <width>60</width>
@@ -62,7 +62,7 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="urlLineEdit">
         <property name="minimumSize">
          <size>
           <width>450</width>
@@ -78,7 +78,7 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="sendBtn">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -102,7 +102,7 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
      </layout>
     </item>
     <item>
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="sendWidget">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -121,25 +121,196 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="sendAuthTab">
        <attribute name="title">
         <string>Authorization</string>
        </attribute>
+       <widget class="QComboBox" name="sendAuthComboBox">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>10</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>No Auth</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Basic Auth</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Digist Auth</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>60</y>
+          <width>340</width>
+          <height>72</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="authTopLayout">
+         <item>
+          <layout class="QHBoxLayout" name="usernameLayout">
+           <item>
+            <widget class="QLabel" name="usernameLabel">
+             <property name="minimumSize">
+              <size>
+               <width>90</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="text">
+              <string>Username</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="usernameLineEdit">
+             <property name="minimumSize">
+              <size>
+               <width>240</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="passwordLayout">
+           <item>
+            <widget class="QLabel" name="passwordLabel">
+             <property name="minimumSize">
+              <size>
+               <width>90</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="text">
+              <string>Password</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="passwordLineEdit">
+             <property name="minimumSize">
+              <size>
+               <width>240</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="sendHeaderTab">
        <attribute name="title">
         <string>Headers</string>
        </attribute>
+       <widget class="QTextEdit" name="sendHeaderTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>651</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="sendBodyTab">
        <attribute name="title">
         <string>Body</string>
        </attribute>
+       <widget class="QTextEdit" name="sendBodyTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>651</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
     <item>
-     <widget class="QTabWidget" name="tabWidget_2">
+     <widget class="QTabWidget" name="recvWidget">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -155,15 +326,47 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="recvBodyTab">
        <attribute name="title">
         <string>Body</string>
        </attribute>
+       <widget class="QTextEdit" name="recvBodyTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>651</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_5">
+      <widget class="QWidget" name="recvHeaderTab">
        <attribute name="title">
         <string>Headers</string>
        </attribute>
+       <widget class="QTextEdit" name="recvHeaderTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>651</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
