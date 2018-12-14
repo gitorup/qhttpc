@@ -25,6 +25,7 @@ private:
 
 private slots:
     void managerFinished(QNetworkReply *reply);
+    void authRequiredReply(QNetworkReply *reply, QAuthenticator *auth);
     void sendBtnClicked(void);
 };
 

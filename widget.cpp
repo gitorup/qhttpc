@@ -4,6 +4,7 @@
 #include <QDateTime>
 #include <QUrl>
 #include <QVariant>
+#include <QAuthenticator>
 #include <QMessageBox>
 #include <QDebug>
 
@@ -18,7 +19,8 @@ Widget::Widget(QWidget *parent) :
 
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(managerFinished(QNetworkReply*)));
-
+    connect(manager, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
+                this, SLOT(authRequiredReply(QNetworkReply*,QAuthenticator*)));
     /* send button */
     connect(ui->sendBtn, SIGNAL(clicked(bool)), this, SLOT(sendBtnClicked()));
 }
@@ -32,7 +34,9 @@ void Widget::managerFinished(QNetworkReply *reply)
 {
     QByteArray byteArray = reply->readAll();
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
-    qDebug() << "recv finished: " << statusCode;
+    if (statusCode.isValid()) {
+        qDebug() << "recv finished: " << statusCode.toInt();
+    }
 
     if (reply->error() == QNetworkReply::NoError) {
         qDebug() << "recv data: " << byteArray;
@@ -47,7 +51,7 @@ void Widget::managerFinished(QNetworkReply *reply)
 void Widget::sendBtnClicked(void)
 {
     QString urlString = ui->urlLineEdit->text();
-    if (urlString.isNull() || urlString.isEmpty()) {
+    if (urlString.isEmpty()) {
         QMessageBox::information(this, tr("Error"), tr("Please input valid URL!"));
         return ;
     }
@@ -55,4 +59,19 @@ void Widget::sendBtnClicked(void)
     QUrl url(urlString);
     manager->get(QNetworkRequest(url));
     qDebug() << "Send finished url: " << urlString;
+}
+
+void Widget::authRequiredReply(QNetworkReply *, QAuthenticator *auth)
+{
+    QString username = ui->usernameLineEdit->text();
+    QString password =ui->passwordLineEdit->text();
+
+    qDebug() << "username: " << username << "password: " << password;
+    if (username.isEmpty() || password.isEmpty()) {
+        QMessageBox::information(this, tr("Error"), tr("Please input valid username and passowrd!"));
+        return ;
+    }
+
+    auth->setUser(username);
+    auth->setPassword(password);
 }
