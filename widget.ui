@@ -330,7 +330,7 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
        <attribute name="title">
         <string>Body</string>
        </attribute>
-       <widget class="QTextEdit" name="recvBodyTextEdit">
+       <widget class="QTextBrowser" name="recvBodyTextBrowser">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -338,12 +338,6 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
           <width>651</width>
           <height>171</height>
          </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>微软雅黑</family>
-          <pointsize>12</pointsize>
-         </font>
         </property>
        </widget>
       </widget>
@@ -351,7 +345,7 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
        <attribute name="title">
         <string>Headers</string>
        </attribute>
-       <widget class="QTextEdit" name="recvHeaderTextEdit">
+       <widget class="QTextBrowser" name="recvHeaderTextBrowser">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -359,12 +353,6 @@ QPushButton:pressed{background-color: rgb(120, 140, 175);border:none;color: whit
           <width>651</width>
           <height>171</height>
          </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>微软雅黑</family>
-          <pointsize>12</pointsize>
-         </font>
         </property>
        </widget>
       </widget>
