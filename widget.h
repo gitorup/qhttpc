@@ -22,9 +22,9 @@ private:
     Ui::Widget *ui;
     QNetworkAccessManager *manager;
     QNetworkReply *reply;
+    int httpRequest(QUrl url, QByteArray &response);
 
 private slots:
-    void managerFinished(QNetworkReply *reply);
     void authRequiredReply(QNetworkReply *reply, QAuthenticator *auth);
     void sendBtnClicked(void);
 };
