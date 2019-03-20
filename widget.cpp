@@ -54,10 +54,12 @@ Widget::Widget(QWidget *parent) :
                            "}");
 
     setStyleSheet(styleSheet);
-    ui->usernameLineEdit->setText(tr("WeEyE"));
-    ui->passwordLineEdit->setText(tr("&$ChuTian_91"));
-    ui->urlLineEdit->setText(tr("http://192.168.20.2/devices/settings"));
+    ui->usernameLineEdit->setText(tr("admin"));
+    ui->passwordLineEdit->setText(tr("admin"));
+    ui->urlLineEdit->setText(tr("http://192.168.0.1"));
     ui->urlLineEdit->setClearButtonEnabled(true);
+    ui->usernameLineEdit->setClearButtonEnabled(true);
+    ui->passwordLineEdit->setClearButtonEnabled(true);
 
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
